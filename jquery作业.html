@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="layui-v2.5.6/jquery-3.2.1.min.js"></script>
+    <script src="layui-v2.5.6/layui/layui.js"></script>
+    <link rel="stylesheet" href="layui-v2.5.6/layui/css/layui.css">
+    <head>
+    <style>
+        div{
+          border: 1px solid black;
+          width: 800px;
+          height: 800px;
+          margin:0 auto;
+        }
+        table tr td{
+          width:200px;
+          height:10px;
+          
+          text-align: center;
+         }
+         p{
+           text-align: center;
+         }
+      </style>
+  
+</head>
+<body>
+        <h2 style="text-align: center;">jq作业</h2>
+        <div>
+            <h1 style="text-align: center;">任务列表</h1>
+            
+           <p></input> <input type="text" size="70" id="text" >
+            <button type="button" class="layui-btn layui-btn-normal" id="add">按钮</button></p>
+            <table align="center">
+                <tr>
+                    <td>任务</td>
+                    <td>时间</td>
+                    <td>选择</td>
+                </tr>
+                <tbody id="tr">
+                <!-- <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr> -->
+                </tbody>
+            </table>
+            
+        </div>
+
+        <script>
+            $(function(){
+                $('#add').click(function(){
+                  //获取名字
+                    var renwu=$('#text').val();
+                    //获取时间
+                    var date=new Date()
+                    var year=date.getFullYear()
+                    var month=date.getMonth() + 1 
+                    var day=date.getDate()
+                    var hours=date.getHours()
+                    var minute=date.getMinutes()
+                    var second=date.getSeconds()
+                    var week=date.getDay()
+                    //拼接时间
+                    var ti=(year + '年' + month + '月' + day + '日' + hours + ':' + minute + ':' + second + '星期' + week)
+                    console.log(ti)
+                    console.log(date)
+                    //新的一行
+                    var addtr=("<tr> "
+                      +"  <td>"+renwu+"</td> "
+                      +"<td>"+ti+"</td>"
+                      +"<td>"
+                       +"<button type='button' class='layui-btn layui-btn-normal' onclick='done(this)'>done</button> "
+                       +"<button type='button' class='layui-btn layui-btn-normal' onclick='delet(this)'>delete</button> "
+                       + "</td>"
+                   +" </tr>)"
+                    );
+                    //将新的一行添加到表格
+                    $('#tr').append(addtr)
+                    })
+            })
+            //删除
+            function delet(dom){
+               var trr= $(dom).parent().parent()
+               trr.remove()
+            }
+            //
+            function done(dom){
+                var tr=$(dom).parent().parent()
+                //添加中线的样式
+               $(tr).css({'text-decoration':'line-through','color':'red'})
+            }
+        </script>
+</body>
+</html>
