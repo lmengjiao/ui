@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="layui-v2.5.6/jquery-3.2.1.min.js"></script>
+    <style type="text/css" >
+        *{
+            font-size:12px;
+        }
+        
+        </style>
+        
+<body>
+    <table border="1" cellpadding="0" cellspacing="0"> 
+        <tr>
+            <th><input type='checkbox' id="all"/>全选</th>
+            <th>商品信息</th>
+            <th>宜美惠价</th>
+            <th>数量</th>
+            <th>操作</th>
+            
+        </tr>
+    
+           <tr class="tr_0">
+               <td>
+                   <input name="" type="checkbox" value=""/>
+               </td>
+               <td>
+                   <img src="images/sang.gif" class="products"/><a href="#">天堂雨伞</a></td><td>￥32.9元
+               </td>
+               <td>
+                       <img src="images/subtraction.gif" width="20" height="20" onclick="jian(this)"/>
+                   <input type="text" class="quantity" value="1"/>
+                   <img src="images/add.gif" width="20" height="20" onclick="jia(this)"/>
+              </td>
+              <td>
+                      <a href="#" class="del">删除</a>
+              </td>
+           </tr>
+           <tr id="tr2">
+               <td>
+                   <input name="" type="checkbox" value=""/>
+               </td>
+               <td>
+                   <img src="images/iphone.gif" class="products"/><a href="#">苹果手机iphone5</a></td><td>￥3339元
+               </td>
+               <td>
+                       <img src="images/subtraction.gif" width="20" height="20" onclick="jiann(this)"/>
+                   <input type="text" class="quantity" value="1"/>
+                   <img src="images/add.gif" width="20" height="20" onclick="jiaa(this)"/>
+              </td>
+              <td>
+                      <a href="#" class="del">删除</a>
+              </td>
+           </tr>
+    
+     </table>
+     
+     <a href="#" id="add">添加</a>
+     <a href="#" id="del">删除</a>
+
+     <script>
+         //全选
+        $(function(){
+            $('#all').click(function(){
+                $('table tr td > input').each(function(index, value) {
+                    if($(this).prop('checked')){
+                        $(this).prop('checked',false)
+                    }else{
+                        $(this).prop('checked',true)
+                    }
+                })
+            })
+        })
+        //删除
+        $(function(){
+            $('.del').click(function(){
+                $(this).parent().parent().remove()
+            })
+        })
+        //加号
+        function jia(btn){
+            var amount=parseInt($(btn).prev().val())
+           $(btn).prev().val(++amount)
+           var pp=$(btn).parent().prev().html('￥' + amount*32.9 + '元')
+           }
+           //加号
+        function jiaa(btn){
+            var amount=parseInt($(btn).prev().val())
+           $(btn).prev().val(++amount)
+           var pp=$(btn).parent().prev().html('￥' + amount*3339 + '元')
+           }
+        //减号
+        function jian(btn){
+            var amount=$(btn).next().val();
+            if(amount>=1){
+            $(btn).next().val(--amount)
+            var pp=$(btn).parent().prev().html('￥' + amount*32.9 + '元')
+            }
+        }
+        //减号
+        function jiann(btn){
+            var amount=$(btn).next().val();
+            if(amount>=1){
+            $(btn).next().val(--amount)
+            var pp=$(btn).parent().prev().html('￥' + amount*3339 + '元')
+            }
+        }
+        //批量删除
+        $(function(){
+            $('#del').click(function(){
+                $('table tr td > input').each(function(index, value) {
+                    if($(this).prop('checked')){
+                        $(this).parent().parent().remove()
+                    }
+                })
+            })
+        })
+        //添加
+        $(function(){
+            $('#add').click(function(){
+                var yi=$('.tr_0 td:eq(3) input').val()
+                var er=$('#tr2 td:eq(3) input').val()
+                if(yi==er){
+                    add1()
+                    }
+                    if(yi>er){
+                        add2()
+                    }
+                })
+            })
+        
+        function add1(){
+            var yi=$('.tr_0 td:eq(3) input').val()
+            var jia=$('.tr_0 td:eq(3) img').prev().val(++yi)
+           var pp=$(jia).parent().prev().html('￥' + amount*32.9 + '元')
+        }
+        function add2(){
+            var yi=$('#tr2 td:eq(3) input').val()
+            var jia=$('#tr2 td:eq(3) img').prev().val(++yi)
+           var pp=$(jia).parent().prev().html('￥' + amount*3339 + '元')
+        }
+     </script>
+    
+</body>
+</html>
