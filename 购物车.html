@@ -85,7 +85,8 @@
         function jia(btn){
             var amount=parseInt($(btn).prev().val())
            $(btn).prev().val(++amount)
-           var pp=$(btn).parent().prev().html('￥' + amount*32.9 + '元')
+           //.toFixed() 保留几位小数
+           var pp=$(btn).parent().prev().html('￥' + (amount*32.9).toFixed(2) + '元')
            }
            //加号
         function jiaa(btn){
@@ -98,7 +99,7 @@
             var amount=$(btn).next().val();
             if(amount>=1){
             $(btn).next().val(--amount)
-            var pp=$(btn).parent().prev().html('￥' + amount*32.9 + '元')
+            var pp=$(btn).parent().prev().html('￥' + (amount*32.9).toFixed(2) + '元')
             }
         }
         //减号
@@ -119,30 +120,30 @@
                 })
             })
         })
-        //添加
+     
+        
         $(function(){
             $('#add').click(function(){
-                var yi=$('.tr_0 td:eq(3) input').val()
-                var er=$('#tr2 td:eq(3) input').val()
-                if(yi==er){
-                    add1()
-                    }
-                    if(yi>er){
-                        add2()
-                    }
-                })
-            })
-        
-        function add1(){
-            var yi=$('.tr_0 td:eq(3) input').val()
-            var jia=$('.tr_0 td:eq(3) img').prev().val(++yi)
-           var pp=$(jia).parent().prev().html('￥' + amount*32.9 + '元')
-        }
-        function add2(){
-            var yi=$('#tr2 td:eq(3) input').val()
+                //获取>0的每一行
+                var tr=$('table tr:gt(0)')
+                var len=tr.length;
+                var ran=parseInt(len * Math.random())
+                
+                if(ran==0){
+                    var yi=$('.tr_0 td:eq(3) input').val()
+                     var jia=$('.tr_0 td:eq(3) img').prev().val(++yi)
+                    var pp=$(jia).parent().prev().html('￥' + (yi*32.9).toFixed(2) + '元')
+
+                }else{
+                    var yi=$('#tr2 td:eq(3) input').val()
             var jia=$('#tr2 td:eq(3) img').prev().val(++yi)
-           var pp=$(jia).parent().prev().html('￥' + amount*3339 + '元')
-        }
+           var pp=$(jia).parent().prev().html('￥' + yi*3339 + '元')
+
+                }
+            })
+        })
+
+
      </script>
     
 </body>
