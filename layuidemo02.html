@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="layui-v2.5.6/layui/layui.js"></script> 
+    <!-- 核心js库 -->
+    <link rel="stylesheet" href="layui-v2.5.6/layui/css/layui.css"> 
+    <!-- 核心css样式 -->
+    <style>
+        *{
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body class="layui-bg-green">
+    <!-- 设置一个宽度为1140的水平居中块 -->
+    <div class="layui-main" style="height: 500px;">
+        我是layui-main 是宽度为1140px的水平居中块
+    </div>
+    <div class="layui-inline">
+        块级元素 宽高可以设置 默认是容器的百分之百
+        行内元素 宽高不可设置 
+        内联元素 只能装文本
+    </div>
+     <div style="width: 216px; margin: 0;">
+        <button type="button" class="layui-btn layui-btn-danger layui-disabled" >设置按钮为不可点击状态</button>
+    </div>
+</body>
+</html>
