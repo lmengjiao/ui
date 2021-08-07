@@ -1,0 +1,68 @@
+#查看所有数据库
+show databases;
+
+#查看是否存在school这个数据库 存在就删除
+drop database if exists school;
+
+#创建school这个数据库
+create database school;
+
+#进入school数据库
+use school;
+
+#查看所有数据表
+show tables;
+
+#查看是否存在student这个表，存在就删除
+drop table if exists student;
+
+#创建studnet表
+create table student(
+id int primary key auto_increment,
+name varchar(255) not null,
+age int not null
+);
+
+#查看student表结构
+desc student;
+
+#向表中添加数据
+insert into student (name,age) values(12,12),('qq',12);
+
+#查询student表
+select * from student;
+
+#修改student表
+update student set age=18 where id=2;
+
+#删除student表中一行或者多行数据
+delete from student where id=1;
+
+
+#查询age这一列 *代表查询所有
+select age from student;
+
+#条件查询 where后边跟查询的条件
+select * from student where age=18;
+
+#高级查询 每条都满足用and 满足一条用or
+select * from student where age between 18 and 12;
+select * from student where age between 18 or 19;
+
+#起别名
+select * from student as s;
+
+#按照age排序 升序
+select * from student order by age asc
+
+#按照age排序 降序
+select * from student order by age desc
+
+#查看前一条数据
+select * from student limit 1;
+
+#查询1-3条数据 （从0开始）
+select * from student limit 0,2;
+
+#按照降序 查前两条数据
+select * from student order by age desc limit 2;
